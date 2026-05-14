@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Claritty;
 
-public class Terminal : Game
+public sealed class Terminal : Game
 {
     public static Terminal Instance = null!;
 

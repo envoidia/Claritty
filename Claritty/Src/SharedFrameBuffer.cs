@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Claritty.Src;
 
-public class SharedGraphicsBuffer(string name)
+public sealed class SharedGraphicsBuffer(string name)
 {
     private MemoryMappedFile? _mmf;
     private MemoryMappedViewAccessor? _accessor;

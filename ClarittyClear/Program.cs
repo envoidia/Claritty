@@ -1,6 +1,6 @@
 ﻿using System.IO.MemoryMappedFiles;
 
-public class Program
+public sealed class Program
 {
     public static void Main(string[] args)
     {
