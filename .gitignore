@@ -1,0 +1,13 @@
+# editor-specific files
+.vs/
+.vscode/
+.idea/
+
+# build files
+*bin
+*obj
+
+# misc
+Claritty/.config
+Content
+app.manifest
