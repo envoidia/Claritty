@@ -2,9 +2,9 @@
 
 public sealed class Program
 {
-    public static void Main(string[] args)
+    public static void Main()
     {
-        string path = $"/dev/shm/ClarittyGraphics";
+        string path = "/dev/shm/ClarittyGraphics";
 
         int width = 1920;
         int height = 1080;

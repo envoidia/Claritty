@@ -40,8 +40,8 @@ public sealed class SharedGraphicsBuffer(string name)
         if (this.Texture is null || this.Texture.Width != width || this.Texture.Height != height)
         {
             this.Texture?.Dispose();
-            this.Texture = new Texture2D(Terminal.Instance.GraphicsDevice, width, height, false,
-                SurfaceFormat.Color);
+            this.Texture = new Texture2D(Terminal.Instance.GraphicsDevice,
+                width, height, false, SurfaceFormat.Color);
         }
 
         Debug.Log($"Shared buffer resized to {width}x{height}");

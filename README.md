@@ -1,2 +1,6 @@
 # Claritty
 A terminal emulator that renders an OpenGL canvas that programs may write anything to, making any visuals possible
+
+Currently a bare minimum proof-of-concept
+
+Simply renders the contents of `/dev/shm/ClarittyGraphics`. If fleshed out further, each session would have its own canvas

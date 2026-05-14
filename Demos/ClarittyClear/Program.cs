@@ -2,14 +2,14 @@
 
 public sealed class Program
 {
-    public static void Main(string[] args)
+    public static void Main()
     {
-        string path = $"/dev/shm/ClarittyGraphics";
+        string path = "/dev/shm/ClarittyGraphics";
 
         int width = 1920;
         int height = 1080;
         long size = (long) width * height * 4;
-        
+
         using MemoryMappedFile mmf = MemoryMappedFile.CreateFromFile(path, FileMode.Open, null,
             size, MemoryMappedFileAccess.ReadWrite);
         using MemoryMappedViewAccessor accessor = mmf.CreateViewAccessor();
