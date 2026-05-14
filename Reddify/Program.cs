@@ -10,15 +10,6 @@ public class Program
         int height = 1080;
         long size = (long) width * height * 4;
 
-        // using (FileStream fs = new(path, FileMode.OpenOrCreate,
-        //     FileAccess.ReadWrite, FileShare.ReadWrite))
-        // {
-        //     if (fs.Length != size)
-        //     {
-        //         fs.SetLength(size);
-        //     }
-        // }
-
         using MemoryMappedFile mmf = MemoryMappedFile.CreateFromFile(path, FileMode.Open, null,
             size, MemoryMappedFileAccess.ReadWrite);
         using MemoryMappedViewAccessor accessor = mmf.CreateViewAccessor();
