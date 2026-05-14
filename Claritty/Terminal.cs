@@ -22,8 +22,11 @@ public sealed class Terminal : Game
     public static readonly StringBuilder CurLine = new(128);
     public static readonly ShellProcess Shell = new();
 
-    public const string BufferName = "ClarittyGraphics";
-    public static readonly SharedGraphicsBuffer Buffer = new(BufferName);
+    public const string LowerBufferName = "ClarittyGraphicsLower";
+    public static readonly SharedGraphicsBuffer LowerBuffer = new(LowerBufferName);
+
+    public const string UpperBufferName = "ClarittyGraphicsUpper";
+    public static readonly SharedGraphicsBuffer UpperBuffer = new(UpperBufferName);
 
     public Terminal()
     {
@@ -41,7 +44,10 @@ public sealed class Terminal : Game
         _font = _FontSystem.GetFont(20);
 
         this.Window.TextInput += InputLib.TextInput;
-        Buffer.CreateOrResize(1920, 1080);
+
+        LowerBuffer.CreateOrResize(1920, 1080);
+        UpperBuffer.CreateOrResize(1920, 1080);
+
         Shell.Start();
     }
 
@@ -62,14 +68,17 @@ public sealed class Terminal : Game
 
         _spriteBatch.Begin();
 
+        LowerBuffer.UpdateTexture();
+        _spriteBatch.Draw(LowerBuffer.Texture, Vector2.Zero, null, Color.White);
+
         _spriteBatch.DrawString(_font, CurLine,
             new Vector2(0, 460), Color.White);
 
         _spriteBatch.DrawString(_font, string.Join(null, OutHist),
             new Vector2(0, 0), Color.White);
 
-        Buffer.UpdateTexture();
-        _spriteBatch.Draw(Buffer.Texture, Vector2.Zero, null, Color.White);
+        UpperBuffer.UpdateTexture();
+        _spriteBatch.Draw(UpperBuffer.Texture, Vector2.Zero, null, Color.White);
 
         _spriteBatch.End();
 

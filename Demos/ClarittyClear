@@ -1,0 +1,23 @@
+﻿#!/usr/bin/env -S dotnet --
+
+using System.IO.MemoryMappedFiles;
+
+string pathLower = "/dev/shm/ClarittyGraphicsLower";
+string pathUpper = "/dev/shm/ClarittyGraphicsUpper";
+
+int width = 1920;
+int height = 1080;
+long size = (long) width * height * 4;
+
+using MemoryMappedFile mmfLower = MemoryMappedFile.CreateFromFile(pathLower, FileMode.Open, null,
+    size, MemoryMappedFileAccess.ReadWrite);
+using MemoryMappedViewAccessor accessorLower = mmfLower.CreateViewAccessor();
+
+using MemoryMappedFile mmfUpper = MemoryMappedFile.CreateFromFile(pathUpper, FileMode.Open, null,
+    size, MemoryMappedFileAccess.ReadWrite);
+using MemoryMappedViewAccessor accessorUpper = mmfLower.CreateViewAccessor();
+
+byte[] pixels = new byte[size];
+
+accessorLower.WriteArray(0, pixels, 0, pixels.Length);
+accessorUpper.WriteArray(0, pixels, 0, pixels.Length);
