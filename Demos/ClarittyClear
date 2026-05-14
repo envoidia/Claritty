@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env -S dotnet --
+#!/usr/bin/env -S dotnet --
 
 using System.IO.MemoryMappedFiles;
 
