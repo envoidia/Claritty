@@ -15,7 +15,7 @@ using MemoryMappedViewAccessor accessorLower = mmfLower.CreateViewAccessor();
 
 using MemoryMappedFile mmfUpper = MemoryMappedFile.CreateFromFile(pathUpper, FileMode.Open, null,
     size, MemoryMappedFileAccess.ReadWrite);
-using MemoryMappedViewAccessor accessorUpper = mmfLower.CreateViewAccessor();
+using MemoryMappedViewAccessor accessorUpper = mmfUpper.CreateViewAccessor();
 
 byte[] pixels = new byte[size];
 
